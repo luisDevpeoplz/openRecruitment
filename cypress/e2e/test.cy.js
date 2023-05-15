@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-// This is just for testing purposes. Please remove this file when you start writing your own tests.
+// This is just for testing purposes.  Please remove this file when you start writing your own tests.
 
 describe('Basic test', () => {
   it('Go to a page and see a text', () => {
