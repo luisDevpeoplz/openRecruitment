@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // This is just for testing purposes. Please remove this file when you start writing your own tests.
 
 describe('Basic test', () => {
