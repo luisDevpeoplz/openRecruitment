@@ -7,7 +7,7 @@ on:
       - develop
 
 jobs:
-  lint-and-test:
+  test:
     runs-on: ubuntu-latest
 
     steps:
