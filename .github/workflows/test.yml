@@ -22,5 +22,15 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run tests
-        run: npm run cypress
+      - name: Build project
+        run: npm run build
+
+      - name: Start server
+        run: |
+          npm start &
+          sleep 10 # Espera 10 segundos para que el servidor se inicie correctamente
+
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v5
+        with:
+          start: npm run cypress

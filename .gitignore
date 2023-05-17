@@ -33,3 +33,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Ignore Cypress screenshots
+cypress/screenshots/
+
+# Ignore Cypress videos
+cypress/videos/
+
+# Postgres
+/data 
