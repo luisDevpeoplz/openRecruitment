@@ -39,3 +39,6 @@ cypress/screenshots/
 
 # Ignore Cypress videos
 cypress/videos/
+
+# Postgres
+/data 
