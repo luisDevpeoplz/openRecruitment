@@ -3,6 +3,11 @@ datasource db {
   url      = "postgresql://recruitment_project:dfr0ncvMUQ0fak8hzp@localhost:5432/recruitment_db"
 }
 
+generator client {
+  provider = "prisma-client-js"
+}
+
+
 model User {
   id        Int      @id @default(autoincrement())
   name      String
