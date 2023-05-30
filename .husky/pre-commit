@@ -3,4 +3,4 @@
 
   npx eslint --fix .
   npx prettier --write .
-  npm start & npm run cypress
+  npm run cypress
