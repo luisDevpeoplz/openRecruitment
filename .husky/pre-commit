@@ -1,5 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-  npx eslint --fix src/**/*.js
-  npx prettier --write src/**/*.js
+  npx eslint --fix .
+  npx prettier --write .
+  npm start & npm run cypress
