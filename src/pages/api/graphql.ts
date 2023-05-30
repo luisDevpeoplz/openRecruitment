@@ -13,5 +13,5 @@ export default createYoga<{
   res: NextApiResponse
 }>({
   graphqlEndpoint: '/api/graphql',
-  schema: schema as any,
+  schema: schema as never,
 })
