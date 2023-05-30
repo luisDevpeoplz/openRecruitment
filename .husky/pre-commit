@@ -3,4 +3,7 @@
 
   npx eslint --fix .
   npx prettier --write .
-  npm run cypress
+
+  echo "***Running unit tests***"
+  unset ELECTRON_RUN_AS_NODE
+npm run cypress -- --config video=false screenshotOnRunFailure=false
