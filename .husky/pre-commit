@@ -1,6 +1,7 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-  npx eslint --fix .
-  npx prettier --write .
-  npm run dev & npm run cypress
+  # npx eslint --fix .
+  # npx prettier --write .
+  # npm run dev & npm run cypress
+  npx lint-staged
