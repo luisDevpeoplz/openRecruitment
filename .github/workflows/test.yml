@@ -43,5 +43,5 @@ jobs:
             echo "Killing process $PORT_PID"
             kill $PORT_PID
           else
-            echo "Port 3000 is not in use"
+            echo "Port 3000 is not in use."
           fi
