@@ -28,7 +28,7 @@ jobs:
       - name: Start server
         run: |
           npm start &
-          sleep 10 # Espera 10 segundos para que el servidor se inicie correctamente
+          sleep 10 # Wait 10 seconds for the server to start correctly.
 
       - name: Run Cypress tests
         uses: cypress-io/github-action@v5
