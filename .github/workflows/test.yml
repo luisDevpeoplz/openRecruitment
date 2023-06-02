@@ -25,17 +25,6 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Close port 3000
-        run: |
-          sudo apt-get install lsof -y
-          PORT_PID=$(lsof -t -i :3000)
-          if [[ -n "$PORT_PID" ]]; then
-            echo "Killing process $PORT_PID"
-            kill $PORT_PID
-          else
-            echo "Port 3000 is not in use."
-          fi
-
       - name: Start server
         run: |
           npm start &
@@ -46,13 +35,5 @@ jobs:
         with:
           start: npm run cypress
 
-      - name: Close port 3000
-        run: |
-          sudo apt-get install lsof -y
-          PORT_PID=$(lsof -t -i :3000)
-          if [[ -n "$PORT_PID" ]]; then
-            echo "Killing process $PORT_PID"
-            kill $PORT_PID
-          else
-            echo "Port 3000 is not in use."
-          fi
+      - name: Stop server
+        run: kill $(lsof -t -i:3000) || true
