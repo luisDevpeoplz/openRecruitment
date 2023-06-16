@@ -57,7 +57,7 @@ export const Button = forwardRef(function Button(
 
 Button.propTypes = {
   variant: PropTypes.oneOf(['solid', 'outline']),
-  color: PropTypes.oneOf(['cyan', 'white', 'gray']),
+  color: PropTypes.oneOf(['primary', 'white', 'gray']),
   className: PropTypes.string,
   href: PropTypes.string,
 } as InferProps<typeof Button.propTypes>
