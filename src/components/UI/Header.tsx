@@ -55,7 +55,12 @@ const Header: React.FC = () => {
   const router: NextRouter = useRouter()
   const currentPath = router.pathname
 
-  console.log('path', currentPath)
+  const navOptions: [string, string][] = [
+    ['Features', '#features'],
+    ['Reviews', '#reviews'],
+    ['Pricing', '#pricing'],
+    ['FAQs', '#faqs'],
+  ]
 
   return (
     <header>
@@ -66,7 +71,7 @@ const Header: React.FC = () => {
               <Logo />
             </Link>
             <div className="hidden lg:flex lg:gap-10">
-              {currentPath == '/' && <NavLinks />}
+              {currentPath == '/' && <NavLinks links={navOptions} />}
             </div>
           </div>
           <div className="flex items-center gap-6">
