@@ -63,106 +63,108 @@ const Header: React.FC = () => {
   ]
 
   return (
-    <header>
+    <header className="w-screen">
       <nav>
-        <Container className="relative z-50 flex justify-between p-8 w-screen">
-          <div className="relative z-10 flex items-center gap-16">
-            <Link href="/" aria-label="Home">
-              <Logo />
-            </Link>
-            <div className="hidden lg:flex lg:gap-10">
-              {currentPath == '/' && <NavLinks links={navOptions} />}
+        <Container>
+          <div className="flex justify-between py-4">
+            <div className="relative z-10 flex items-center gap-16">
+              <Link href="/" aria-label="Home">
+                <Logo />
+              </Link>
+              <div className="hidden lg:flex lg:gap-10">
+                {currentPath == '/' && <NavLinks links={navOptions} />}
+              </div>
             </div>
-          </div>
-          <div className="flex items-center gap-6">
-            <Popover className="lg:hidden">
-              {({ open, close }) => (
-                <>
-                  <Popover.Button
-                    className="relative z-10 -m-2 inline-flex items-center rounded-lg stroke-gray-900 p-2 hover:bg-gray-200/50 hover:stroke-gray-600 active:stroke-gray-900 [&:not(:focus-visible)]:focus:outline-none"
-                    aria-label="Toggle site navigation"
-                  >
-                    {open ? (
-                      <ChevronUpIcon className="h-6 w-6" />
-                    ) : (
-                      <MenuIcon className="h-6 w-6" />
-                    )}
-                  </Popover.Button>
+            <div className="flex items-center gap-6">
+              <Popover className="lg:hidden">
+                {({ open, close }) => (
+                  <>
+                    <Popover.Button
+                      className="relative z-10 -m-2 inline-flex items-center rounded-lg stroke-gray-900 p-2 hover:bg-gray-200/50 hover:stroke-gray-600 active:stroke-gray-900 [&:not(:focus-visible)]:focus:outline-none"
+                      aria-label="Toggle site navigation"
+                    >
+                      {open ? (
+                        <ChevronUpIcon className="h-6 w-6" />
+                      ) : (
+                        <MenuIcon className="h-6 w-6" />
+                      )}
+                    </Popover.Button>
 
-                  <AnimatePresence initial={false}>
-                    {open && (
-                      <>
-                        <Popover.Overlay
-                          static
-                          as={motion.div}
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          className="fixed inset-0 z-0 bg-gray-300/60 backdrop-blur"
-                        />
-                        <Popover.Panel
-                          static
-                          as={motion.div}
-                          initial={{ opacity: 0, y: -32 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{
-                            opacity: 0,
-                            y: -32,
-                            transition: { duration: 0.2 },
-                          }}
-                          className="absolute inset-x-0 top-0 z-0 origin-top rounded-b-2xl bg-gray-50 px-6 pb-6 pt-32 shadow-2xl shadow-gray-900/20"
-                        >
-                          {currentPath == '/' && (
-                            <div className="space-y-4">
-                              <MobileNavLink href="#features">
-                                Features
-                              </MobileNavLink>
-                              <MobileNavLink href="#reviews">
-                                Reviews
-                              </MobileNavLink>
-                              <MobileNavLink href="#pricing">
-                                Pricing
-                              </MobileNavLink>
-                              <MobileNavLink href="#faqs">FAQs</MobileNavLink>
+                    <AnimatePresence initial={false}>
+                      {open && (
+                        <>
+                          <Popover.Overlay
+                            static
+                            as={motion.div}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="fixed inset-0 z-0 bg-gray-300/60 backdrop-blur"
+                          />
+                          <Popover.Panel
+                            static
+                            as={motion.div}
+                            initial={{ opacity: 0, y: -32 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{
+                              opacity: 0,
+                              y: -32,
+                              transition: { duration: 0.2 },
+                            }}
+                            className="absolute inset-x-0 top-0 z-0 origin-top rounded-b-2xl bg-gray-50 px-6 pb-6 pt-32 shadow-2xl shadow-gray-900/20"
+                          >
+                            {currentPath == '/' && (
+                              <div className="space-y-4">
+                                <MobileNavLink href="#features">
+                                  Features
+                                </MobileNavLink>
+                                <MobileNavLink href="#reviews">
+                                  Reviews
+                                </MobileNavLink>
+                                <MobileNavLink href="#pricing">
+                                  Pricing
+                                </MobileNavLink>
+                                <MobileNavLink href="#faqs">FAQs</MobileNavLink>
+                              </div>
+                            )}
+                            <div className="mt-8 flex flex-col gap-4">
+                              {currentPath !== '/login' && (
+                                <Button
+                                  href="/login"
+                                  variant="outline"
+                                  onClick={() => close()}
+                                >
+                                  Log in
+                                </Button>
+                              )}
+                              {currentPath !== '/signup' && (
+                                <Button href="/signup" onClick={() => close()}>
+                                  Sign Up
+                                </Button>
+                              )}
                             </div>
-                          )}
-                          <div className="mt-8 flex flex-col gap-4">
-                            {currentPath !== '/login' && (
-                              <Button
-                                href="/login"
-                                variant="outline"
-                                onClick={() => close()}
-                              >
-                                Log in
-                              </Button>
-                            )}
-                            {currentPath !== '/signup' && (
-                              <Button href="/signup" onClick={() => close()}>
-                                Sign Up
-                              </Button>
-                            )}
-                          </div>
-                        </Popover.Panel>
-                      </>
-                    )}
-                  </AnimatePresence>
-                </>
+                          </Popover.Panel>
+                        </>
+                      )}
+                    </AnimatePresence>
+                  </>
+                )}
+              </Popover>
+              {currentPath !== '/login' && (
+                <Button
+                  href="/login"
+                  variant="outline"
+                  className="hidden lg:block"
+                >
+                  Log in
+                </Button>
               )}
-            </Popover>
-            {currentPath !== '/login' && (
-              <Button
-                href="/login"
-                variant="outline"
-                className="hidden lg:block"
-              >
-                Log in
-              </Button>
-            )}
-            {currentPath !== '/signup' && (
-              <Button href="/signup" className="hidden lg:block">
-                Sign Up
-              </Button>
-            )}
+              {currentPath !== '/signup' && (
+                <Button href="/signup" className="hidden lg:block">
+                  Sign Up
+                </Button>
+              )}
+            </div>
           </div>
         </Container>
       </nav>
