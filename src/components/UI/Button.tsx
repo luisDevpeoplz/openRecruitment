@@ -51,7 +51,7 @@ export const Button = forwardRef(function Button(
   return href ? (
     <Link href={href} className={mergedClassName} {...props}></Link>
   ) : (
-    <button ref={ref} className={mergedClassName} {...props} />
+    <a ref={ref} className={mergedClassName} {...props} />
   )
 })
 
