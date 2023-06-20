@@ -16,6 +16,7 @@ interface TextFieldProps {
   placeholder?: string
   autoComplete?: string
   required?: boolean
+  name?: string
 }
 
 function Label({ id, children }: LabelProps) {
