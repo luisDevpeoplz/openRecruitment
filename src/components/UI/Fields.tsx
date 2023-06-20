@@ -1,7 +1,10 @@
 import React, { ReactNode } from 'react'
+import clsx from 'clsx'
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
 
 const formClasses =
-  'block w-full appearance-none rounded-lg border border-gray-200 bg-white py-[calc(theme(spacing.2)-1px)] px-[calc(theme(spacing.3)-1px)] text-gray-900 placeholder:text-gray-400 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm'
+  'block w-full rounded-lg border border-gray-200 bg-white py-[calc(theme(spacing.2)-1px)] px-[calc(theme(spacing.3)-1px)] text-gray-900 placeholder:text-gray-400 focus:border-cyan-500 focus:outline-none focus:ring-cyan-500 sm:text-sm'
 
 interface LabelProps {
   id: string
@@ -41,6 +44,46 @@ export function TextField({
     <div className={className}>
       {label && <Label id={id}>{label}</Label>}
       <input id={id} type={type} {...props} className={formClasses} />
+    </div>
+  )
+}
+
+export function SelectField({ id, label, className, ...props }: any) {
+  return (
+    <div className={className}>
+      {label && <Label id={id}>{label}</Label>}
+      <select id={id} {...props} className={clsx(formClasses, 'pr-8')} />
+    </div>
+  )
+}
+
+export function PhoneField({ id, label, className, ...props }: any) {
+  const containerStyles = {
+    width: '100%',
+    border: '1px solid #e2e8f0',
+    backgroundColor: 'white',
+    borderRadius: '0.375rem',
+    padding: 'calc(var(--spacing-2) - 1px) calc(var(--spacing-3) - 1px)',
+    color: 'var(--text-gray-900)',
+  }
+
+  return (
+    <div className={className}>
+      {label && <Label id={id}>{label}</Label>}
+      <div style={containerStyles}>
+        <PhoneInput
+          placeholder="write your phone..."
+          country="us"
+          {...props}
+          inputStyle={{
+            width: '100%',
+            border: 'none',
+            backgroundColor: 'transparent',
+            color: 'inherit',
+            outline: 'none',
+          }}
+        />
+      </div>
     </div>
   )
 }
