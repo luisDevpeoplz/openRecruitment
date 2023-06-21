@@ -6,7 +6,7 @@ import BackgroundIllustration from '../UI/BackgroundIlustration'
 
 const ForgotPasswordForm = () => {
   return (
-    <div className="">
+    <>
       <BackgroundIllustration
         width="900"
         height="900"
@@ -40,7 +40,7 @@ const ForgotPasswordForm = () => {
           Go back
         </Link>
       </form>
-    </div>
+    </>
   )
 }
 
