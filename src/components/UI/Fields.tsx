@@ -22,6 +22,31 @@ interface TextFieldProps {
   name?: string
 }
 
+type option = {
+  value: string
+  label: string
+}
+interface SelectFieldProps {
+  id: string
+  label?: string
+  className?: string
+  placeholder?: string
+  autoComplete?: string
+  required?: boolean
+  name?: string
+  options: option[]
+}
+
+interface PhoneFieldProps {
+  id: string
+  label?: string
+  className?: string
+  placeholder?: string
+  autoComplete?: string
+  required?: boolean
+  name?: string
+}
+
 function Label({ id, children }: LabelProps) {
   return (
     <label
@@ -48,16 +73,32 @@ export function TextField({
   )
 }
 
-export function SelectField({ id, label, className, ...props }: any) {
+export function SelectField({
+  id,
+  label,
+  className,
+  ...props
+}: SelectFieldProps) {
   return (
     <div className={className}>
       {label && <Label id={id}>{label}</Label>}
-      <select id={id} {...props} className={clsx(formClasses, 'pr-8')} />
+      <select id={id} {...props} className={clsx(formClasses, 'pr-8')}>
+        {props.options.map((option: any) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
     </div>
   )
 }
 
-export function PhoneField({ id, label, className, ...props }: any) {
+export function PhoneField({
+  id,
+  label,
+  className,
+  ...props
+}: PhoneFieldProps) {
   const containerStyles = {
     width: '100%',
     border: '1px solid #e2e8f0',

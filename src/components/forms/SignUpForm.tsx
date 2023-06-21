@@ -64,7 +64,6 @@ const SignUpForm = () => {
             label="Phone number"
             id="phone"
             name="phone"
-            type="tel"
             autoComplete="tel"
             required
           />
@@ -82,10 +81,12 @@ const SignUpForm = () => {
             label="How did you hear about us?"
             id="referral-source"
             name="referral_source"
-          >
-            <option>Social media</option>
-            <option>Recomendation</option>
-          </SelectField>
+            options={[
+              { value: 'google', label: 'Google' },
+              { value: 'friend', label: 'Friend' },
+              { value: 'other', label: 'Other' },
+            ]}
+          ></SelectField>
         </div>
         <Button type="submit" color="primary" className="mt-8 w-full">
           Start your free trial
