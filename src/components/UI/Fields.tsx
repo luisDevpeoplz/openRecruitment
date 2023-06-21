@@ -83,7 +83,7 @@ export function SelectField({
     <div className={className}>
       {label && <Label id={id}>{label}</Label>}
       <select id={id} {...props} className={clsx(formClasses, 'pr-8')}>
-        {props.options.map((option: any) => (
+        {props.options.map((option: option) => (
           <option key={option.value} value={option.value}>
             {option.label}
           </option>
