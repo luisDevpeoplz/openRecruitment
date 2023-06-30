@@ -100,12 +100,8 @@ export function PhoneField({
   ...props
 }: PhoneFieldProps) {
   const containerStyles = {
-    width: '100%',
     border: '1px solid #e2e8f0',
-    backgroundColor: 'white',
     borderRadius: '0.375rem',
-    padding: 'calc(var(--spacing-2) - 1px) calc(var(--spacing-3) - 1px)',
-    color: 'var(--text-gray-900)',
   }
 
   return (

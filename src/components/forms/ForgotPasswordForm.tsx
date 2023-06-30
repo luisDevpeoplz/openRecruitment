@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from '../UI/Button'
 import { TextField } from '../UI/Fields'
 import Link from 'next/link'
-import BackgroundIllustration from '../UI/BackgroundIlustration'
+import BackgroundIllustration from '../layout/BackgroundIlustration'
 
 const ForgotPasswordForm = () => {
   return (
@@ -19,8 +19,8 @@ const ForgotPasswordForm = () => {
         No worries, we&apos;ll send you a recovery link.
       </p>
 
-      <form className="bg-white p-8 rounded-3xl my-4">
-        <div className="space-y-6">
+      <form className="bg-white md:p-8 px-4 py-8 rounded-3xl my-4">
+        <div className="space-y-6 mb-4">
           <TextField
             label="Email address"
             id="email"
@@ -30,14 +30,14 @@ const ForgotPasswordForm = () => {
             required
           />
         </div>
-        <Button type="submit" color="primary" className="mt-8 w-full">
+        <Button type="submit" color="primary" size="full">
           Send recovery link
         </Button>
         <Link
           href="/login"
           className="text-cyan-600 hover:underline mt-2 text-center block w-full"
         >
-          Go back to login
+          Go back to log in
         </Link>
       </form>
     </>

@@ -1,17 +1,15 @@
 import React from 'react'
-
-import { Button } from './Button'
-import { Container } from './Container'
-import { NavLinks } from './NavLinks'
-import { TextField } from './Fields'
-import { Logo } from './Logo'
+import { Container } from '../UI/Container'
+import { NavLinks } from '../UI/NavLinks'
+import { Logo } from '../UI/Logo'
+import JoinNewsletter from '../JoinNewsletter'
 
 const Footer = () => {
   const navOptions: [string, string][] = [
-    ['Features', '#features'],
-    ['Reviews', '#reviews'],
-    ['Pricing', '#pricing'],
-    ['FAQs', '#faqs'],
+    ['Features', '/#features'],
+    ['Reviews', '/#reviews'],
+    ['Pricing', '/#pricing'],
+    ['FAQs', '/#faqs'],
   ]
 
   return (
@@ -28,27 +26,13 @@ const Footer = () => {
                 </p>
               </div>
             </div>
-            <nav className="flex gap-8">
+            <nav className="flex gap-8 hidden md:block">
               <NavLinks links={navOptions} />
             </nav>
           </div>
         </div>
         <div className="flex flex-col items-center border-t border-gray-200 pb-12 pt-8 md:flex-row-reverse md:justify-between md:pt-6 w-full">
-          <form className="flex w-full justify-center md:w-auto">
-            <TextField
-              id="email"
-              type="email"
-              aria-label="Email address"
-              placeholder="Email address"
-              autoComplete="email"
-              required
-              className="w-60 min-w-0 shrink"
-            />
-            <Button type="submit" color="primary" className="ml-4 flex-none">
-              <span className="hidden lg:inline">Join our newsletter</span>
-              <span className="lg:hidden">Join newsletter</span>
-            </Button>
-          </form>
+          <JoinNewsletter />
           <p className="mt-6 text-sm text-gray-500 md:mt-0">
             &copy; Copyright {new Date().getFullYear()}. All rights reserved.
           </p>
