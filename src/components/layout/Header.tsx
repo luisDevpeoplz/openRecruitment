@@ -1,10 +1,10 @@
 import React, { ReactNode, SVGProps } from 'react'
 import { Popover } from '@headlessui/react'
-import { Container } from './Container'
-import { Logo } from './Logo'
-import { NavLinks } from './NavLinks'
+import { Container } from '../UI/Container'
+import { Logo } from '../UI/Logo'
+import { NavLinks } from '../UI/NavLinks'
 import Link from 'next/link'
-import { Button } from './Button'
+import { Button } from '../UI/Button'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useRouter, NextRouter } from 'next/router'
 
@@ -64,13 +64,11 @@ const Header: React.FC = () => {
 
   return (
     <header className="w-screen">
-      <nav>
+      <nav className="h-12">
         <Container>
           <div className="flex justify-between py-4">
-            <div className="relative z-10 flex items-center gap-16">
-              <Link href="/" aria-label="Home">
-                <Logo />
-              </Link>
+            <div className="relative  flex items-center gap-16">
+              <Logo />
               <div className="hidden lg:flex lg:gap-10">
                 {currentPath == '/' && <NavLinks links={navOptions} />}
               </div>
@@ -111,34 +109,38 @@ const Header: React.FC = () => {
                               y: -32,
                               transition: { duration: 0.2 },
                             }}
-                            className="absolute inset-x-0 top-0 z-0 origin-top rounded-b-2xl bg-gray-50 px-6 pb-6 pt-32 shadow-2xl shadow-gray-900/20"
+                            className="absolute inset-x-0 top-0 z-0 origin-top rounded-b-2xl bg-gray-50 px-6 pb-6 pt-16 shadow-2xl shadow-gray-900/20 backdrop-blur"
                           >
-                            {currentPath == '/' && (
-                              <div className="space-y-4">
-                                <MobileNavLink href="#features">
-                                  Features
-                                </MobileNavLink>
-                                <MobileNavLink href="#reviews">
-                                  Reviews
-                                </MobileNavLink>
-                                <MobileNavLink href="#pricing">
-                                  Pricing
-                                </MobileNavLink>
-                                <MobileNavLink href="#faqs">FAQs</MobileNavLink>
-                              </div>
-                            )}
+                            <div className="space-y-4">
+                              <MobileNavLink href="/#features">
+                                Features
+                              </MobileNavLink>
+                              <MobileNavLink href="/#reviews">
+                                Reviews
+                              </MobileNavLink>
+                              <MobileNavLink href="/#pricing">
+                                Pricing
+                              </MobileNavLink>
+                              <MobileNavLink href="/#faqs">FAQs</MobileNavLink>
+                            </div>
+
                             <div className="mt-8 flex flex-col gap-4">
                               {currentPath !== '/login' && (
                                 <Button
                                   href="/login"
                                   variant="outline"
+                                  size="full"
                                   onClick={() => close()}
                                 >
                                   Log in
                                 </Button>
                               )}
                               {currentPath !== '/signup' && (
-                                <Button href="/signup" onClick={() => close()}>
+                                <Button
+                                  href="/signup"
+                                  size="full"
+                                  onClick={() => close()}
+                                >
                                   Sign Up
                                 </Button>
                               )}
@@ -154,13 +156,18 @@ const Header: React.FC = () => {
                 <Button
                   href="/login"
                   variant="outline"
+                  size="medium"
                   className="hidden lg:block"
                 >
                   Log in
                 </Button>
               )}
               {currentPath !== '/signup' && (
-                <Button href="/signup" className="hidden lg:block">
+                <Button
+                  href="/signup"
+                  className="hidden lg:block"
+                  size="medium"
+                >
                   Sign Up
                 </Button>
               )}

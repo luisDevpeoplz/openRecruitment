@@ -1,19 +1,25 @@
-import React, { forwardRef, Ref, AnchorHTMLAttributes } from 'react'
+import React, { AnchorHTMLAttributes } from 'react'
 import Link from 'next/link'
 import clsx from 'clsx'
-import PropTypes, { InferProps } from 'prop-types'
 
 const baseStyles = {
   solid:
-    'inline-flex justify-center rounded-lg py-2 px-3 text-sm font-semibold outline-2 outline-offset-2 transition-colors cursor-pointer',
+    'inline-flex justify-center rounded-lg py-2 px-3 text-sm font-semibold outline-2 outline-offset-2 transition-colors cursor-pointer text-center border border-2 border-primary-500',
   outline:
-    'inline-flex justify-center rounded-lg border py-[calc(theme(spacing.2)-1px)] px-[calc(theme(spacing.3)-1px)] text-sm outline-2 outline-offset-2 transition-colors',
+    'inline-flex justify-center rounded-lg border border-2 py-[calc(theme(spacing.2)-1px)] px-[calc(theme(spacing.3)-1px)] text-sm outline-2 outline-offset-2 transition-colors text-center font-bold',
+}
+
+const sizeStyles = {
+  small: 'w-24',
+  medium: 'w-32',
+  large: 'w-40',
+  full: 'w-full',
 }
 
 const variantStyles = {
   solid: {
     primary:
-      'relative overflow-hidden bg-primary-500 text-white before:absolute before:inset-0 active:before:bg-transparent hover:before:bg-white/10 active:bg-cyan-600 active:text-white/80 before:transition-colors',
+      'bg-primary-500 text-white  active:before:bg-transparent hover:before:bg-white/10 active:bg-cyan-600 active:text-white/80 before:transition-colors',
     white:
       'bg-white text-cyan-900 hover:bg-white/90 active:bg-white/90 active:text-cyan-900/70',
     gray: 'bg-gray-800 text-white hover:bg-gray-900 active:bg-gray-800 active:text-white/80',
@@ -25,39 +31,42 @@ const variantStyles = {
   },
 }
 
-interface ButtonProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+interface ButtonProps {
   variant?: 'solid' | 'outline'
   color?: 'primary' | 'white' | 'gray'
   className?: string
   href?: string
+  size?: 'small' | 'medium' | 'large' | 'full'
+  children: React.ReactNode
+  onClick?: () => void
+  type?: 'button' | 'submit' | 'reset'
 }
 
-export const Button = forwardRef(function Button(
-  {
-    variant = 'solid',
-    color = 'primary',
-    className,
-    href,
-    ...props
-  }: ButtonProps,
-  ref: Ref<HTMLAnchorElement>
-) {
+export const Button = ({
+  variant = 'solid',
+  color = 'primary',
+  size = 'medium',
+  className,
+  href,
+  children,
+  ...props
+}: ButtonProps) => {
   const mergedClassName = clsx(
     baseStyles[variant],
     (variantStyles[variant] as { [key: string]: string })[color],
+    sizeStyles[size],
     className
   )
 
   return href ? (
-    <Link href={href} className={mergedClassName} {...props}></Link>
+    <Link href={href}>
+      <button className={mergedClassName} {...props}>
+        {children}
+      </button>
+    </Link>
   ) : (
-    <a ref={ref} className={mergedClassName} {...props} />
+    <button className={mergedClassName} {...props}>
+      {children}
+    </button>
   )
-})
-
-Button.propTypes = {
-  variant: PropTypes.oneOf(['solid', 'outline']),
-  color: PropTypes.oneOf(['primary', 'white', 'gray']),
-  className: PropTypes.string,
-  href: PropTypes.string,
-} as InferProps<typeof Button.propTypes>
+}

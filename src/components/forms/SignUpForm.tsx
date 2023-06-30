@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from '../UI/Button'
 import { PhoneField, TextField } from '../UI/Fields'
 import Link from 'next/link'
-import BackgroundIllustration from '../UI/BackgroundIlustration'
+import BackgroundIllustration from '../layout/BackgroundIlustration'
 import { SelectField } from '../UI/Fields'
 
 const SignUpForm = () => {
@@ -19,12 +19,12 @@ const SignUpForm = () => {
       <p className="text-gray-600 mt-2">
         Does your company already has account? &nbsp;
         <Link href="/login" className="text-cyan-600 hover:underline">
-          LogIn
+          Log in
         </Link>
       </p>
 
-      <form className="bg-white p-8 rounded-3xl my-4">
-        <div className="grid grid-cols-2 gap-6">
+      <form className="bg-white md:p-8 px-4 py-8 rounded-3xl my-4">
+        <div className="grid grid-cols-2 gap-6 mb-4">
           <TextField
             className="col-span-full"
             label="Company name"
