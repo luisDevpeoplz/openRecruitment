@@ -48,6 +48,11 @@ interface PhoneFieldProps {
   name?: string
 }
 
+interface Company {
+  id: number
+  name: string
+}
+
 function Label({ id, children }: LabelProps) {
   return (
     <label
@@ -126,7 +131,7 @@ export function PhoneField({
   )
 }
 
-export function SelectCompany({ companies }: any) {
+export function SelectCompany({ companies }: { companies: Company[] }) {
   return (
     <div className="flex items-center">
       <PiBuildingsBold className="h-6 w-6" />
@@ -136,7 +141,7 @@ export function SelectCompany({ companies }: any) {
         className="block text-base focus:outline-none focus:ring-cyan-500  rounded-md h-10 bg-transparent"
         defaultValue="0"
       >
-        {companies.map((company: any) => (
+        {companies.map((company) => (
           <option key={company.id} value={company.id}>
             {company.name}
           </option>
