@@ -178,7 +178,7 @@ const Header: React.FC = () => {
                   {currentPath == '/' && <NavLinks links={navOptions} />}
                 </div>
               </div>
-              <div className="flex items-center">
+              <div className="flex items-center md:gap-4">
                 <Popover className="lg:hidden">
                   {({ open, close }) => (
                     <>
